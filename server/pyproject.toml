@@ -1,0 +1,14 @@
+[project]
+name = "ane-lm-server"
+version = "0.1.0"
+description = "OpenAI compatible server for ANE-LM"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "httpx",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
