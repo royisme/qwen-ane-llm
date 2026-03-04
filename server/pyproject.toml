@@ -2,12 +2,18 @@
 name = "qwen-ane-llm-server"
 version = "0.1.0"
 description = "OpenAI compatible server for qwen-ane-llm"
+requires-python = ">=3.9"
 dependencies = [
     "fastapi",
     "uvicorn",
     "pydantic",
     "httpx",
+    "python-dotenv",
 ]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["api*", "core*", "adapters*"]
 
 [build-system]
 requires = ["setuptools", "wheel"]

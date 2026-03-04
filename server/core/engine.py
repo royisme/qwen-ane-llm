@@ -41,7 +41,12 @@ class LLMEngine:
     def __init__(self, adapter: ANEBindingAdapter):
         self.adapter = adapter
         self.request_queue = asyncio.Queue()
-        self.worker_task = asyncio.create_task(self._worker_loop())
+        self.worker_task = None
+
+    def start(self):
+        """Start the worker loop. Must be called after event loop is running."""
+        if self.worker_task is None:
+            self.worker_task = asyncio.create_task(self._worker_loop())
 
     def format_qwen_tools(self, tools: List[Dict[str, Any]]) -> str:
         schemas = [json.dumps(t["function"], ensure_ascii=False) for t in tools if t.get("type") == "function"]
