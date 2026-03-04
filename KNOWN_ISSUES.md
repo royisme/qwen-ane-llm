@@ -10,8 +10,8 @@ curl -X POST http://127.0.0.1:11222/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "qwen3.5-2B",
-    "messages": [{"role": "user", "content": "请调用 run_date 工具获取当前时间"}],
-    "tools": [{"type": "function", "function": {"name": "run_date", "description": "获取当前系统时间"}}],
+    "messages": [{"role": "user", "content": "please run_date tool to get current time"}],
+    "tools": [{"type": "function", "function": {"name": "run_date", "description": "get current time"}}],
     "temperature": 0
   }'
 ```

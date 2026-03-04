@@ -3,3 +3,6 @@ example/
 .DS_Store
 *.dSYM/
 .idea
+.serena
+.claude
+.env.*
