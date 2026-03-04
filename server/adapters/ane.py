@@ -33,10 +33,10 @@ class ANEAdapter:
         except subprocess.TimeoutExpired:
             process.kill()
             stdout, stderr = process.communicate()
-            raise TimeoutError("ANE-LM generation timed out after 300 seconds")
+            raise TimeoutError("qwen-ane-llm generation timed out after 300 seconds")
 
         if process.returncode != 0:
-            raise Exception(f"ANE-LM failed with exit code {process.returncode}: {stderr}")
+            raise Exception(f"qwen-ane-llm failed with exit code {process.returncode}: {stderr}")
 
         # Parse generated text and stats
         # The generated text is before the stats

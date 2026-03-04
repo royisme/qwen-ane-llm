@@ -6,7 +6,7 @@ from server.api.protocol import ChatCompletionRequest, ModelList, ModelCard
 from server.adapters.ane_binding import ANEBindingAdapter
 from server.core.engine import LLMEngine
 
-app = FastAPI(title="ANE-LM OpenAI Compatible Server")
+app = FastAPI(title="qwen-ane-llm OpenAI Compatible Server")
 
 # Initialize Engine with Shared Library Binding
 BINARY_PATH = os.environ.get("ANE_LIBRARY_PATH", "./build/libane-lm.dylib")

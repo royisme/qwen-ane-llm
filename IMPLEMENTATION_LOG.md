@@ -1,6 +1,6 @@
-# ANE-LM OpenAI 兼容封装 — 重构实现日志 (v2)
+# qwen-ane-llm OpenAI 兼容封装 — 重构实现日志 (v2)
 
-本日志记录了对 **royisme/ANE-LM** 进行深度重构的过程，目标是实现一个工业级的 OpenAI 兼容服务，支持高性能推理、Tool Calling 闭环、流式输出及多用户并发调度。
+本日志记录了对 **royisme/qwen-ane-llm** 进行深度重构的过程，目标是实现一个工业级的 OpenAI 兼容服务，支持高性能推理、Tool Calling 闭环、流式输出及多用户并发调度。
 
 ---
 
@@ -10,7 +10,7 @@
 
 ### 1.1 C++ 层：动态库化 (The Shared Library)
 - **目标**：解决模型加载慢的问题。
-- **实现**：将 ANE-LM 核心代码重构为 `libane-lm.dylib`。
+- **实现**：将 qwen-ane-llm 核心代码重构为 `libane-lm.dylib`。
 - **接口**：定义了纯 C 接口 `include/ane_lm/ane_lm_c.h`，支持模型一次加载、多次推理。
 - **回调机制**：引入 `ane_callback_t`，支持在推理过程中实时获取 Token。
 

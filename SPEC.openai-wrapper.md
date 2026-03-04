@@ -1,6 +1,6 @@
-# ANE-LM OpenAI 兼容封装 — SPEC（非流式 v0）
+# qwen-ane-llm OpenAI 兼容封装 — SPEC（非流式 v0）
 
-目标：在 **royisme/ANE-LM** 上实现一个“可被 OpenAI SDK / curl / litellm 调用”的本地 HTTP 服务，提供 **OpenAI API 兼容（subset）**，并实现 **最小 tool/function call 闭环**。
+目标：在 **royisme/qwen-ane-llm** 上实现一个“可被 OpenAI SDK / curl / litellm 调用”的本地 HTTP 服务，提供 **OpenAI API 兼容（subset）**，并实现 **最小 tool/function call 闭环**。
 
 > 结论先行：当前你看到的“模型说它不能调用外部工具”并不是模型本身的问题，而是**服务层缺少 tool schema 传递 + tool call 解析/执行 + tool loop**。
 
@@ -44,7 +44,7 @@
 
 ### 推荐结构（可在 repo 内新增）
 - `server/`：OpenAI 兼容 HTTP 服务（Python FastAPI 或 Node/Fastify 二选一）
-- `server/adapters/ane.py`：把 ANE-LM 的推理能力封成统一接口
+- `server/adapters/ane.py`：把 qwen-ane-llm 的推理能力封成统一接口
 
 ### 启动命令（示例）
 - Python：
@@ -192,7 +192,7 @@ v0 推荐路线 A，稳定后再升级路线 B。
 
 ---
 
-## 5. 适配 ANE-LM 推理层（Adapter 约束）
+## 5. 适配 qwen-ane-llm 推理层（Adapter 约束）
 
 需要抽象一个函数：
 ```ts
@@ -201,7 +201,7 @@ generate({messages, temperature, max_tokens}): Promise<string>
 或 Python 等价。
 
 要求：
-- 把 OpenAI messages 转为 ANE-LM 可用的 prompt（Chat template / jinja）
+- 把 OpenAI messages 转为 qwen-ane-llm 可用的 prompt（Chat template / jinja）
 - 支持 system/user/assistant/tool 四种 role（tool 作为文本注入）
 - 可在 v0 先用简单拼接模板（后续再对齐官方 chat template）
 

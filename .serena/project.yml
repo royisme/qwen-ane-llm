@@ -1,5 +1,5 @@
 # the name by which the project can be referenced within Serena
-project_name: "ANE-LM"
+project_name: "qwen-ane-llm"
 
 
 # list of languages for which language servers are started; choose from:

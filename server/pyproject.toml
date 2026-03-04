@@ -1,7 +1,7 @@
 [project]
-name = "ane-lm-server"
+name = "qwen-ane-llm-server"
 version = "0.1.0"
-description = "OpenAI compatible server for ANE-LM"
+description = "OpenAI compatible server for qwen-ane-llm"
 dependencies = [
     "fastapi",
     "uvicorn",
