@@ -115,6 +115,12 @@ Edit `.env` file:
 └─────────────────────────────────────────┘
 ```
 
+## Acknowledgments
+
+- [maderix/ANE](https://github.com/maderix/ANE) - Training neural networks on Apple Neural Engine via reverse-engineered private APIs
+- [llama.cpp](https://github.com/ggml-org/llama.cpp) - LLM inference in C/C++
+- [royisme/ANE-LM](https://github.com/royisme/ANE-LM) - Original ANE-LM project
+
 ## License
 
 MIT License
