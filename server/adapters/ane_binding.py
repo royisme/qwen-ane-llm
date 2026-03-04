@@ -94,7 +94,7 @@ class ANEBindingAdapter:
             temperature,
             1.2,    # repetition_penalty
             False,  # enable_thinking
-            False,  # reset_context
+            True,   # reset_context - reset KV cache for each request
             c_callback,
             None
         )

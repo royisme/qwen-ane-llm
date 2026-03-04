@@ -54,15 +54,20 @@ class LLMEngine:
 
     def parse_tool_calls(self, text: str) -> List[Dict[str, Any]]:
         tool_calls = []
-        matches = re.finditer(r'<tool_call>(.*?)</tool_call>', text, re.DOTALL)
+        # Match tool_call blocks - handle both with and without closing tag
+        matches = re.finditer(r'<tool_call>\s*(.*?)(?:</tool_call>|$)', text, re.DOTALL)
         for match in matches:
             try:
                 data = json.loads(match.group(1).strip())
-                if "name" in data and "arguments" in data:
+                # Handle both "name" and "function.name" formats
+                name = data.get("name") or data.get("function", {}).get("name")
+                arguments = data.get("arguments") or data.get("function", {}).get("arguments") or {}
+
+                if name:
                     tool_calls.append({
                         "id": f"call_{uuid.uuid4().hex[:12]}",
                         "type": "function",
-                        "function": {"name": data["name"], "arguments": json.dumps(data["arguments"])}
+                        "function": {"name": name, "arguments": json.dumps(arguments)}
                     })
             except (json.JSONDecodeError, KeyError, ValueError, TypeError) as err:
                 logger.warning("Failed to parse tool_call block: %s", err)
